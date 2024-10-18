@@ -3,16 +3,14 @@ package app
 import (
 	"html/template"
 
-	bin "github.com/kingreawill/go-sizeof-tips/internal/bindata/templates"
+	"github.com/kingreawill/go-sizeof-tips/templs"
 )
-
-const templatesDir = "templs/"
 
 var templates map[string]*template.Template
 
 func prepareTemplates() error {
 	templates = make(map[string]*template.Template)
-	baseData, err := bin.Asset(templatesDir + "parts/base.tmpl")
+	baseData, err := templs.TemplFiles.ReadFile("parts/base.tmpl")
 	if err != nil {
 		return err
 	}
@@ -24,7 +22,7 @@ func prepareTemplates() error {
 	for _, name := range []string{
 		"index", "404", "500",
 	} {
-		assetData, err := bin.Asset(templatesDir + name + ".tmpl")
+		assetData, err := templs.TemplFiles.ReadFile(name + ".tmpl")
 		if err != nil {
 			return err
 		}

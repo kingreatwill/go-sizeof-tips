@@ -1,9 +1,5 @@
 package app
 
-import "github.com/kingreawill/go-sizeof-tips/internal/log"
-
-var appLog log.Logger
-
 const DefaultHttpPort = ":7777"
 
 // Represents simple zero-cost message that can be used

@@ -6,12 +6,13 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/kingreawill/go-sizeof-tips/internal/bindata/static"
+	"github.com/kingreawill/go-sizeof-tips/pub"
+	"github.com/rs/zerolog/log"
 )
 
 func bindHttpHandlers() {
 	fileServer := http.NewServeMux()
-	fileServer.Handle("/", useCustom404(http.FileServer(static.AssetFS())))
+	fileServer.Handle("/", useCustom404(http.FileServer(http.FS(pub.StaticFiles))))
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		defer func() {
@@ -19,7 +20,7 @@ func bindHttpHandlers() {
 				buf := make([]byte, 1<<16)
 				runtime.Stack(buf, false)
 				reason := fmt.Sprintf("%v: %s", r, buf)
-				appLog.Critical("Runtime failure, reason -> %s", reason)
+				log.Error().Msgf("Runtime failure, reason -> %s", reason)
 				write500(w)
 			}
 		}()
