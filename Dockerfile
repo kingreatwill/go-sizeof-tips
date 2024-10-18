@@ -32,4 +32,4 @@ ENTRYPOINT ["/root/server"]
 
 # docker build -t go-sizeof-tips .
 # docker run -it --rm -p 7777:7777 --name go-sizeof-tips go-sizeof-tips
-# docker run -d -p 10003:7777 --name golang-sizeof --restart always kingreatwill/golang-sizeof:v1.0
+# docker run -d -p 10003:7777 --name golang-sizeof --restart always kingreatwill/golang-sizeof:v1.1
