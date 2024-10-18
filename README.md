@@ -1,9 +1,6 @@
 Golang sizeof tips
 ==================
 
-**Consider alternatives:**
-- https://github.com/dominikh/go-tools/tree/master/cmd/structlayout
-
 Web tool for interactive playing with Golang struct sizes.
 
 Try online version [here](https://golang-sizeof.wcoder.com/).
@@ -24,11 +21,7 @@ go build -o ./server
 You may also install via simple `go get` by your own risk.
 
 
-## Usage
-```bash
-./server -http=:7777 start
-./server stop
-./server restart
-```
+## Other
 
-> https://github.com/tyranron/golang-sizeof.tips
+- https://github.com/dominikh/go-tools/tree/master/cmd/structlayout
+
